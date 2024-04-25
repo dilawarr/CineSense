@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result</title>
+    <title>CineSense | Result</title>
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
     <h1>Analysis Result</h1>
-    <p>The sentiment of the review is: {{ sentiment }}</p>
+    <p>Our AI has determined this review to be: {{ sentiment }}</p>
+    <form action="/test" method="GET">
+        <button type="submit">Go Back</button>
+    </form>
 </body>
 </html>

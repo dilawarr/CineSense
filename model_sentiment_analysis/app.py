@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 import joblib
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
-from sklearn.feature_extraction.text import TfidfVectorizer
 import re
 
 app = Flask(__name__)
@@ -23,11 +22,13 @@ def stemming(content):
 def index():
     return render_template('index.html')
 
-@app.route('/predict', methods=['POST'])
+@app.route('/test', methods=['GET'])
+def test():
+    return render_template('test.html')
 
+@app.route('/predict', methods=['POST'])
 def predict():
     review = request.form['review']
-
     # pangey
     review = stemming(review)
     review = [review]
@@ -36,6 +37,10 @@ def predict():
 
     # sentiment = model.predict([review])[0]
     sentiment = model.predict(review)
+    if sentiment:
+        sentiment = "Positive"
+    else:
+        sentiment = "Negative"
     return render_template('result.html', sentiment=sentiment)
 
 if __name__ == '__main__':
