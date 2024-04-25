@@ -1,14 +1,14 @@
 from flask import Flask, render_template, request
-import pickle
+import joblib
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 import re
 
 app = Flask(__name__)
-model = pickle.load('models/sentiment_model.sav')  # Load your sentiment analysis model
+model = joblib.load('models/sentiment_model.sav')  # Load your sentiment analysis model
 port_stem = PorterStemmer()
-vectorizer = TfidfVectorizer()
+vectorizer = joblib.load('models/vectorizer.pkl')
 
 def stemming(content):
     stemmed_content = re.sub('[^a-zA-Z]', ' ', content)
