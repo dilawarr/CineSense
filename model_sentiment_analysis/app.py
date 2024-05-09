@@ -5,7 +5,7 @@ from nltk.stem.porter import PorterStemmer
 import re
 
 app = Flask(__name__)
-model = joblib.load('models/sentiment_model.sav')  # Load your sentiment analysis model
+model = joblib.load('models/sentiment_model.sav')
 port_stem = PorterStemmer()
 vectorizer = joblib.load('models/vectorizer.pkl')
 
