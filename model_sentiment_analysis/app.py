@@ -22,21 +22,22 @@ def stemming(content):
 def index():
     return render_template('index.html')
 
-@app.route('/test', methods=['GET'])
-def test():
-    return render_template('test.html')
+@app.route('/review', methods=['GET'])
+def review():
+    return render_template('review.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
     review = request.form['review']
-    # pangey
+
+    # processing the entered review
     review = stemming(review)
     review = [review]
     review = vectorizer.transform(review)
-    # 
+    # end of processing
 
-    # sentiment = model.predict([review])[0]
     sentiment = model.predict(review)
+    # sentiment = model.predict([review])[0]
     if sentiment:
         sentiment = "Positive"
     else:
