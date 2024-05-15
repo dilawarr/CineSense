@@ -1,0 +1,2 @@
+Our project's focus is to develop a machine learning model that accurately predicts the sentiment of movie reviews.
+Sentiment analysis aims to classify the sentiment of movie reviews as positive or negative.
